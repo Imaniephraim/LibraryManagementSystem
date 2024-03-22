@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserDAO {
     public static boolean authenticateUser(String username, String password) throws SQLException {
-        String query = "SELCECT + FROM users WHERE username = ? AND password =?";
+        String query = "SELECT + FROM users WHERE username = ? AND password =?";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, username);
             stmt.setString(2, password);

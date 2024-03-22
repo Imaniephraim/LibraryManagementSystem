@@ -43,6 +43,23 @@ public class BookDAO {
             stmt.executeUpdate();
         }
     }
+    public static void returnBook (int bookId)throws SQLException{
+        String query = "UPDATE books SET available = false, borrowed_by =null WHERE book_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, bookId);
+            stmt.executeUpdate();
+        }
+    }
+    public static void updateBook (Book book)throws SQLException{
+        String query = "UPDATE books SET available = false, borrowed_by =?,borrowed_date = CURRENT_DATE WHERE book_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, book.getTitle());
+            stmt.setString(2, book.getAuthor());
+            stmt.setInt(3, book.getBookId());
+            stmt.executeUpdate();
+        }
+    }
+
     public static void deleteBook(int bookId) throws SQLException{
         String query = "DELETE FROM books WHERE book_id = ?";
         try(Connection conn = DatabaseConnection.getConnection();PreparedStatement stmt = conn.prepareStatement(query)) {
