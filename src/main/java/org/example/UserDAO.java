@@ -60,6 +60,14 @@ public class UserDAO {
             stmt.executeUpdate();
         }
     }
+    public static void deleteUser(int userId) throws SQLException{
+        String query = "DELETE FROM users WHERE user_id = ?";
+        try(Connection conn = DatabaseConnection.getConnection();PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        }
+    }
+
 }
 
 

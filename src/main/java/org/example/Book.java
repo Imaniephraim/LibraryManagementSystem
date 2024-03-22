@@ -36,11 +36,11 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public String title() {
+    public String getTitle() {
         return title;
     }
 
-    public void title(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
